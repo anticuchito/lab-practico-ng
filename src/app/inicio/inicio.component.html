@@ -4,7 +4,7 @@
   </div>
   <form [formGroup]="formulario">
     <!-- input para nombbre -->
-    <div>
+    <div class="form-group">
       <label for="nombre">Nombre</label>
       <input
         type="text"
@@ -20,12 +20,19 @@
           formularioReactivo.nombre?.errors?.required &&
           formularioReactivo.nombre.touched
         "
+        class="text-danger"
       >
         el nombre es requerido
       </small>
+      <small
+        *ngIf="formularioReactivo.nombre?.errors?.minlength"
+        class="text-danger"
+      >
+        El nombre debe de tener al menos 4 caracteres</small
+      >
     </div>
     <!-- input para apellido -->
-    <div>
+    <div class="form-group">
       <label for="apellido">Apellido</label>
       <input
         type="text"
@@ -35,6 +42,77 @@
         placeholder="Ingresa tu apellido"
         required
       />
+      <small
+        *ngIf="
+          formularioReactivo.apellido?.errors?.required &&
+          formularioReactivo.apellido.touched
+        "
+        class="text-danger"
+      >
+        el apellido es requerido
+      </small>
+      <small
+        *ngIf="formularioReactivo.apellido?.errors?.minlength"
+        class="text-danger"
+      >
+        El apellido debe de tener al menos 4 caracteres</small
+      >
+    </div>
+    <!-- input para Edad -->
+    <div class="form-group">
+      <label for="edad">Edad</label>
+      <input
+        type="number"
+        class="form-control"
+        id="edad"
+        formControlName="edad"
+        placeholder="Ingresa tu edad"
+        required
+      />
+      <small
+        *ngIf="
+          formularioReactivo.edad?.errors?.required &&
+          formularioReactivo.edad.touched
+        "
+        class="text-danger"
+      >
+        la edad es requerida
+      </small>
+      <small *ngIf="formularioReactivo.edad?.errors?.min" class="text-danger">
+        La edad debe de ser mayor a 18
+      </small>
+    </div>
+    <!-- input para email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+        placeholder="Ingresa tu email"
+        required
+      />
+      <small
+        *ngIf="
+          formularioReactivo.email?.errors?.required &&
+          formularioReactivo.email.touched
+        "
+        class="text-danger"
+      >
+        el email es requerido
+      </small>
+    </div>
+    <!-- boton -->
+    <div class="form-group">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        (click)="btnEnviar()"
+        [disabled]="!formulario.valid"
+      >
+        Enviar
+      </button>
     </div>
   </form>
 </div>

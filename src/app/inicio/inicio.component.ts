@@ -22,6 +22,6 @@ export class InicioComponent implements OnInit {
     return this.formulario.controls;
   }
   btnEnviar() {
-    console.log(this.formulario);
+    console.log(this.formulario.value);
   }
 }
