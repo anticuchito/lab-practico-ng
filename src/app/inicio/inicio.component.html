@@ -1,0 +1,40 @@
+<div class="container">
+  <div>
+    <h1>Formulario</h1>
+  </div>
+  <form [formGroup]="formulario">
+    <!-- input para nombbre -->
+    <div>
+      <label for="nombre">Nombre</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nombre"
+        formControlName="nombre"
+        placeholder="Ingresa tu nombre"
+        required
+      />
+      <!-- mostrar el error para el campo nombre -->
+      <small
+        *ngIf="
+          formularioReactivo.nombre?.errors?.required &&
+          formularioReactivo.nombre.touched
+        "
+      >
+        el nombre es requerido
+      </small>
+    </div>
+    <!-- input para apellido -->
+    <div>
+      <label for="apellido">Apellido</label>
+      <input
+        type="text"
+        class="form-control"
+        id="apellido"
+        formControlName="apellido"
+        placeholder="Ingresa tu apellido"
+        required
+      />
+    </div>
+  </form>
+</div>
